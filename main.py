@@ -45,7 +45,10 @@ else:
     lan = userLocale[0].split('_')[0]
 
 # Set the local directory
-app_path = os.path.abspath(os.path.dirname(sys.argv[0]))
+try:
+    app_path = sys._MEIPASS
+except Exception:
+    app_path = os.path.abspath(os.path.dirname(sys.argv[0]))
 localedir = app_path + os.sep + 'locales'
 # Set up your magic function
 translate = gettext.translation("messages", localedir, languages=[lan], fallback=True)

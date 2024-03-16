@@ -8,20 +8,30 @@ The dongle functions as a standard USB audio speaker and microphone, requiring n
 
 ## Installation
 
-On Windows, the compiled App can be downloaded directly from Microsoft Store.
+On Windows, Official App can be downloaded directly from [Microsoft Store](https://www.microsoft.com/store/productId/9NX1CW8VZ6QR).
 
-Requires python 3.7+
-Please also install the following modules when needed.
-
-tkinter
-pyserial
-pystray
-serial-tool
+Pre-compiled executables for various operating systems are also available at Release Tab.
  
 ## Usage
 
 Once configured, the dongle can automatically reconnect to the most recently used device. Please check the support link for more advanced uses. 
  
+## Compiling
+
+Requires python 3.7+ & following modules
+- pyserial
+- pystray
+- serial-tool
+- pyinstaller
+
+This fork added pyinstaller support to compile the project.
+
+```Python
+cd <Project Location>   # Move to project
+pip install             # Install required modules
+pyinstaller main.spec   # Compile executable to ./dist
+```
+
 ## Platform specific notes/issues
 
 On Linux, if you run the app as a non-root user, you might get "Permission denied: '/dev/ttyACM0'" error. 
