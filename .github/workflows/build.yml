@@ -22,12 +22,12 @@ jobs:
             python-version: 3.9
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         ref: precompiled
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -58,8 +58,23 @@ jobs:
       run: |
         pyinstaller --clean main.spec
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+    - name: Upload artifact (macOS ARM)
+      if: runner.os == 'macOS' && matrix.os == 'macos-latest'
+      uses: actions/upload-artifact@v4
       with:
-        name: FlooCast-${{ runner.os }}
+        name: FlooCast-macos-arm64
+        path: dist/*
+
+    - name: Upload artifact (macOS x86_64)
+      if: runner.os == 'macOS' && matrix.os == 'macos-12'
+      uses: actions/upload-artifact@v4
+      with:
+        name: FlooCast-macos-x86_64
+        path: dist/*
+
+    - name: Upload artifact (macOS ARM)
+      if: runner.os != 'macOS'
+      uses: actions/upload-artifact@v4
+      with:
+        name: FlooCast-${{ matrix.os }}
         path: dist/*
