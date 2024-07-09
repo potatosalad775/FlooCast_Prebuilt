@@ -46,17 +46,22 @@ jobs:
       run: |
         # Build for Intel
         pyinstaller main.spec
-        mv dist/FlooCast dist/FlooCast-x86_64
+        mv dist/FlooCast.app dist/FlooCast-x86_64.app
 
         # Build for Apple Silicon
         ARCHFLAGS="-arch arm64" pyinstaller main.spec
-        mv dist/FlooCast dist/FlooCast-arm64
+        mv dist/FlooCast.app dist/FlooCast-arm64.app
 
         # Create universal binary
-        lipo -create -output dist/FlooCast dist/FlooCast-x86_64/FlooCast dist/FlooCast-arm64/FlooCast
+        lipo -create -output dist/FlooCast.app/Contents/MacOS/FlooCast \
+          dist/FlooCast-x86_64.app/Contents/MacOS/FlooCast \
+          dist/FlooCast-arm64.app/Contents/MacOS/FlooCast
 
-        # Might need to adjust paths accordingly - if it's a .app bundle, 
-        # lipo -create -output dist/FlooCast.app/Contents/MacOS/FlooCast dist/FlooCast-x86_64.app/Contents/MacOS/FlooCast dist/FlooCast-arm64.app/Contents/MacOS/FlooCast
+        # Copy over the arm64 Info.plist as it will have the correct binary name
+        cp dist/FlooCast-arm64.app/Contents/Info.plist dist/FlooCast.app/Contents/Info.plist
+
+        # Optional: Remove the architecture-specific .app bundles
+        rm -rf dist/FlooCast-x86_64.app dist/FlooCast-arm64.app
 
     - name: Build with PyInstaller (Non-macOS)
       if: runner.os != 'macOS'
