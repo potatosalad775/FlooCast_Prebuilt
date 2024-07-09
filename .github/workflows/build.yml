@@ -18,6 +18,8 @@ jobs:
             python-version: 3.9
           - os: macos-latest
             python-version: 3.9
+          - os: macos-12
+            python-version: 3.9
 
     steps:
     - uses: actions/checkout@v2
@@ -41,34 +43,20 @@ jobs:
         pip install pyinstaller
         pip install pystray notify-py pyserial serial-tool certifi
 
-    - name: Build with PyInstaller (macOS Universal)
-      if: runner.os == 'macOS'
+    - name: Build with PyInstaller (macOS ARM)
+      if: runner.os == 'macOS' && matrix.os == 'macos-latest'
       run: |
-        # Build for Intel
+        pyinstaller --clean --distpath dist/FlooCast-arm64 main.spec
+
+    - name: Build with PyInstaller (macOS x86_64)
+      if: runner.os == 'macOS' && matrix.os == 'macos-12'
+      run: |
         pyinstaller --clean --distpath dist/FlooCast-x86_64 main.spec
-
-        # Build for Apple Silicon
-        ARCHFLAGS="-arch arm64" pyinstaller --clean --distpath dist/FlooCast-arm64 main.spec
-
-        # Create universal binary
-        lipo -create -output dist/FlooCast-Universal/FlooCast.app/Contents/MacOS/FlooCast \
-          dist/FlooCast-x86_64/FlooCast.app/Contents/MacOS/FlooCast \
-          dist/FlooCast-arm64/FlooCast.app/Contents/MacOS/FlooCast
-
-        # Copy over the arm64 Info.plist as it will have the correct binary name
-        cp dist/FlooCast-arm64/FlooCast.app/Contents/Info.plist dist/FlooCast-Universal/FlooCast.app/Contents/Info.plist
-
-        # Optional: Remove the architecture-specific .app bundles
-        rm -rf dist/FlooCast-x86_64 dist/FlooCast-arm64
 
     - name: Build with PyInstaller (Non-macOS)
       if: runner.os != 'macOS'
       run: |
-        # Build
         pyinstaller --clean main.spec
-
-        # Optional: Remove the existing output directory
-        rm -rf dist/FlooCast
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
