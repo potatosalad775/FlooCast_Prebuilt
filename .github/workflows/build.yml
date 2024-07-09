@@ -11,8 +11,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.9]
+        include:
+          - os: ubuntu-latest
+            python-version: 3.9
+          - os: windows-latest
+            python-version: 3.9
+          - os: macos-latest
+            python-version: 3.9
 
     steps:
     - uses: actions/checkout@v2
@@ -36,8 +41,26 @@ jobs:
         pip install pyinstaller
         pip install pystray notify-py pyserial serial-tool certifi
 
-    - name: Build with PyInstaller
-      run: pyinstaller FlooCast.spec
+    - name: Build with PyInstaller (macOS Universal)
+      if: runner.os == 'macOS'
+      run: |
+        # Build for Intel
+        pyinstaller main.spec
+        mv dist/FlooCast dist/FlooCast-x86_64
+
+        # Build for Apple Silicon
+        ARCHFLAGS="-arch arm64" pyinstaller main.spec
+        mv dist/FlooCast dist/FlooCast-arm64
+
+        # Create universal binary
+        lipo -create -output dist/FlooCast dist/FlooCast-x86_64/FlooCast dist/FlooCast-arm64/FlooCast
+
+        # Might need to adjust paths accordingly - if it's a .app bundle, 
+        # lipo -create -output dist/FlooCast.app/Contents/MacOS/FlooCast dist/FlooCast-x86_64.app/Contents/MacOS/FlooCast dist/FlooCast-arm64.app/Contents/MacOS/FlooCast
+
+    - name: Build with PyInstaller (Non-macOS)
+      if: runner.os != 'macOS'
+      run: pyinstaller main.spec
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
