@@ -45,11 +45,11 @@ jobs:
       if: runner.os == 'macOS'
       run: |
         # Build for Intel
-        pyinstaller main.spec
+        pyinstaller --clean main.spec
         mv dist/FlooCast.app dist/FlooCast-x86_64.app
 
         # Build for Apple Silicon
-        ARCHFLAGS="-arch arm64" pyinstaller main.spec
+        ARCHFLAGS="-arch arm64" pyinstaller --clean main.spec
         mv dist/FlooCast.app dist/FlooCast-arm64.app
 
         # Create universal binary
@@ -65,7 +65,12 @@ jobs:
 
     - name: Build with PyInstaller (Non-macOS)
       if: runner.os != 'macOS'
-      run: pyinstaller main.spec
+      run: |
+        # Build
+        pyinstaller --clean main.spec
+
+        # Optional: Remove the existing output directory
+        rm -rf dist/FlooCast
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
