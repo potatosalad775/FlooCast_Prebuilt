@@ -51,15 +51,15 @@ jobs:
         ARCHFLAGS="-arch arm64" pyinstaller --clean --distpath dist/FlooCast-arm64 main.spec
 
         # Create universal binary
-        lipo -create -output dist/FlooCast.app/Contents/MacOS/FlooCast \
-          dist/FlooCast-x86_64.app/Contents/MacOS/FlooCast \
-          dist/FlooCast-arm64.app/Contents/MacOS/FlooCast
+        lipo -create -output dist/FlooCast-Universal/FlooCast.app/Contents/MacOS/FlooCast \
+          dist/FlooCast-x86_64/FlooCast.app/Contents/MacOS/FlooCast \
+          dist/FlooCast-arm64/FlooCast.app/Contents/MacOS/FlooCast
 
         # Copy over the arm64 Info.plist as it will have the correct binary name
-        cp dist/FlooCast-arm64.app/Contents/Info.plist dist/FlooCast.app/Contents/Info.plist
+        cp dist/FlooCast-arm64/FlooCast.app/Contents/Info.plist dist/FlooCast-Universal/FlooCast.app/Contents/Info.plist
 
         # Optional: Remove the architecture-specific .app bundles
-        rm -rf dist/FlooCast-x86_64.app dist/FlooCast-arm64.app
+        rm -rf dist/FlooCast-x86_64 dist/FlooCast-arm64
 
     - name: Build with PyInstaller (Non-macOS)
       if: runner.os != 'macOS'
