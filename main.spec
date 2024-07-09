@@ -65,7 +65,7 @@ if sys.platform == 'darwin':
         coll,
         name='FlooCast.app',
         icon='FlooCastApp.ico',
-        bundle_identifier=None,
+        bundle_identifier='com.potatosalad775.floocast',
         info_plist={
             'NSHighResolutionCapable': 'True'
         },

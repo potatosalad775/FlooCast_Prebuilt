@@ -27,7 +27,7 @@ jobs:
         ref: precompiled
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -63,14 +63,14 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: FlooCast-macos-arm64
-        path: dist/*
+        path: dist/FlooCast-arm64/FlooCast.app
 
     - name: Upload artifact (macOS x86_64)
       if: runner.os == 'macOS' && matrix.os == 'macos-12'
       uses: actions/upload-artifact@v4
       with:
         name: FlooCast-macos-x86_64
-        path: dist/*
+        path: dist/FlooCast-x86_64/FlooCast.app
 
     - name: Upload artifact (macOS ARM)
       if: runner.os != 'macOS'
