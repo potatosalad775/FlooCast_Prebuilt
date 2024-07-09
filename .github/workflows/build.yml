@@ -45,12 +45,10 @@ jobs:
       if: runner.os == 'macOS'
       run: |
         # Build for Intel
-        pyinstaller --clean main.spec
-        mv dist/FlooCast.app dist/FlooCast-x86_64.app
+        pyinstaller --clean --distpath dist/FlooCast-x86_64 main.spec
 
         # Build for Apple Silicon
-        ARCHFLAGS="-arch arm64" pyinstaller --clean main.spec
-        mv dist/FlooCast.app dist/FlooCast-arm64.app
+        ARCHFLAGS="-arch arm64" pyinstaller --clean --distpath dist/FlooCast-arm64 main.spec
 
         # Create universal binary
         lipo -create -output dist/FlooCast.app/Contents/MacOS/FlooCast \
