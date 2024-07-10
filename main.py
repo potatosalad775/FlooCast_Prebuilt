@@ -21,10 +21,10 @@ import urllib.request
 import certifi
 import ssl
 
-appIcon = "assets/FlooCastApp.ico"
-appGif = "assets/FlooCastApp.gif"
-appTitle = "assets/FlooCast"
-appLogoPng = "assets/FlooCastHeader.png"
+appIcon = "FlooCastApp.ico"
+appGif = "FlooCastApp.gif"
+appTitle = "FlooCast"
+appLogoPng = "FlooCastHeader.png"
 
 codecStr = ['None',
             'CVSD',
@@ -114,8 +114,8 @@ def update_status_bar(info: str):
 
 
 # Define On/Off Images
-on = tk.PhotoImage(file=app_path + os.sep + 'assets/onS.png')
-off = tk.PhotoImage(file=app_path + os.sep + 'assets/offS.png')
+on = tk.PhotoImage(file=app_path + os.sep + 'onS.png')
+off = tk.PhotoImage(file=app_path + os.sep + 'offS.png')
 
 mainFrame.rowconfigure(0, weight=0)
 mainFrame.rowconfigure(1, weight=0)

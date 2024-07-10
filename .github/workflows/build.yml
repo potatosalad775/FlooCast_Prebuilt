@@ -48,25 +48,25 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           # Build App
-          python setup_linux.py bdist_appimage
+          python setup.py bdist_appimage
 
       - name: Build with PyInstaller (macOS ARM)
         if: runner.os == 'macOS' && matrix.os == 'macos-latest'
         run: |
           # Build App
-          python setup_macos.py bdist_dmg
+          python setup.py bdist_dmg
 
       - name: Build with PyInstaller (macOS x86_64)
         if: runner.os == 'macOS' && matrix.os == 'macos-12'
         run: |
           # Build App
-          python setup_macos.py bdist_dmg
+          python setup.py bdist_dmg
 
       - name: Build with PyInstaller (Windows)
         if: runner.os == 'Windows'
         run: |
           # Build App
-          python setup_windows.py bdist_msi
+          python setup.py bdist_msi
 
       - name: Upload artifact (Linux)
         if: runner.os == 'Linux'
