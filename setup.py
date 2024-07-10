@@ -7,14 +7,8 @@ build_exe_options = {
     "includes": ["queue"],
     "packages": [],
     "include_files": [
-      ("./FlooCastApp.ico", "FlooCastApp.ico"),
-      ("./FlooCastApp.gif", "FlooCastApp.gif"),
-      ("./FlooCastApp.png", "FlooCastApp.png"),
-      ("./FlooCastApp.icns", "FlooCastApp.icns"),
-      ("./FlooCastHeader.png", "FlooCastHeader.png"),
-      ("./offS.png", "offS.png"),
-      ("./onS.png", "onS.png"),
-      ("./locales/", "locales"),
+        ("./assets/", "assets"),
+        ("./locales/", "locales"),
     ]
 }
 
@@ -22,7 +16,7 @@ executables = [
     Executable(
         "main.py",
         base="gui",
-        icon="FlooCastApp.ico",
+        icon="assets/FlooCastApp.ico",
         target_name="FlooCast",
         shortcut_name="FlooCast",
     )
@@ -34,13 +28,7 @@ if sys.platform == "linux":
         "includes": ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res"],
         "packages": [],
         "include_files": [
-            ("./FlooCastApp.ico", "FlooCastApp.ico"),
-            ("./FlooCastApp.gif", "FlooCastApp.gif"),
-            ("./FlooCastApp.png", "FlooCastApp.png"),
-            ("./FlooCastApp.icns", "FlooCastApp.icns"),
-            ("./FlooCastHeader.png", "FlooCastHeader.png"),
-            ("./offS.png", "offS.png"),
-            ("./onS.png", "onS.png"),
+            ("./assets/", "assets"),
             ("./locales/", "locales"),
         ]
     }
@@ -49,14 +37,14 @@ if sys.platform == "linux":
         Executable(
             "main.py",
             base="gui",
-            icon="FlooCastApp.png",
+            icon="assets/FlooCastApp.png",
             target_name="FlooCast",
             shortcut_name="FlooCast",
         )
     ]
 
 bdist_mac_options = {
-    "iconfile": "FlooCastApp.icns"
+    "iconfile": "assets/FlooCastApp.icns"
 }
 bdist_dmg_options = {
     "applications_shortcut": True,
