@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: FlooCast-macos-x86_64
-          path: build/*
+          path: build/*.dmg
 
       - name: Upload artifact (Windows)
         if: runner.os == 'Windows'
