@@ -3,10 +3,7 @@ from cx_Freeze import setup, Executable
 # Dependencies are automatically detected, but they might need fine-tuning.
 build_exe_options = {
     "excludes": [],
-    "includes": ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res", "System",
-      "System.IO.Ports", "_scproxy", "_wmi", "defusedxml", "gi", "gi.repository", "msvcrt", "nturl2path", "numpy",
-      "numpy.typing", "packaging.version", "re.IGNORECASE", "typing_extensions"
-    ],
+    "includes": ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res"],
     "packages": [],
     "include_files": [
       "FlooCastApp.gif",
