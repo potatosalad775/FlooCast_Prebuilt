@@ -36,7 +36,7 @@ if sys.platform == "linux":
     }
 
 bdist_mac_options = {
-    "iconfile": "assets/FlooCastApp.icns"
+    "iconfile": "FlooCastApp.icns"
 }
 bdist_dmg_options = {
     "applications_shortcut": True,
@@ -46,7 +46,7 @@ executables = [
     Executable(
         "main.py",
         base="gui",
-        icon="assets/FlooCastApp.ico",
+        icon="FlooCastApp.ico",
         target_name="FlooCast",
         shortcut_name="FlooCast",
     )
