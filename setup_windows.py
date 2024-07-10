@@ -3,7 +3,7 @@ from cx_Freeze import setup, Executable
 # Dependencies are automatically detected, but they might need fine-tuning.
 build_exe_options = {
     "excludes": [],
-    "includes": ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res"],
+    "includes": ["queue"],
     "packages": [],
     "include_files": [
       "assets",
@@ -15,7 +15,7 @@ executables = [
     Executable(
         "main.py",
         base="gui",
-        icon="FlooCastApp.png",
+        icon="FlooCastApp.ico",
         target_name="FlooCast",
         shortcut_name="FlooCast",
     )

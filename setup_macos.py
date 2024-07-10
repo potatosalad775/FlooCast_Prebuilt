@@ -6,11 +6,7 @@ build_exe_options = {
     "includes": ["queue"],
     "packages": [],
     "include_files": [
-      "FlooCastApp.gif",
-      "FlooCastApp.ico",
-      "FlooCastHeader.png",
-      "offS.png",
-      "onS.png",
+      "assets",
       "locales"
     ]
 }
@@ -19,7 +15,7 @@ executables = [
     Executable(
         "main.py",
         base="gui",
-        icon="FlooCastApp.ico",
+        icon="FlooCastApp.icns",
         target_name="FlooCast",
         shortcut_name="FlooCast",
     )
