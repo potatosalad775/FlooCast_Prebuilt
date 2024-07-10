@@ -76,14 +76,14 @@ jobs:
           path: dist/*
 
       - name: Upload artifact (macOS ARM)
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' && matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v4
         with:
           name: FlooCast-macos-arm
           path: build/*.dmg
 
       - name: Upload artifact (macOS x86_64)
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' && matrix.os == 'macos-12'
         uses: actions/upload-artifact@v4
         with:
           name: FlooCast-macos-x86_64
