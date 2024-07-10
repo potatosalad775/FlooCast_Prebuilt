@@ -1,6 +1,8 @@
-# FlooCast
+# FlooCast - Prebuilt
 
-A Python application that allows for the control and configuration of FlooGoo USB Bluetooth dongles.
+[KR / 한국어](./README_KR.md)
+
+A Pre-compiled Python application that allows for the control and configuration of FlooGoo USB Bluetooth dongles.
 
 It configures a FlooGoo FMA120 Bluetooth dongle to pair and connect with a Bluetooth headset/speaker for streaming audio or making VoIP calls. It can also configure the dongle to work as an AuraCast sender.
 
@@ -8,22 +10,36 @@ The dongle functions as a standard USB audio speaker and microphone, requiring n
 
 ## Installation
 
-On Windows, the compiled App can be downloaded directly from Microsoft Store.
+This repository is hosting compiled executables for various platorms mentioned below.
 
-Requires python 3.7+
-Please also install the following modules when needed.
+- Windows (x86_64) - .msi installer
+- macOS (arm64 for Apple Silicon) - .dmg image
+- macOS (x86_64 for Intel) - .dmg image
+- Linux (x86_64) - .appimage bundle
 
-tkinter
-pyserial
-pystray
-serial-tool
-certifi
+Please refer to [Release Page.](https://github.com/potatosalad775/FlooCast/releases)
+
+On Windows, the official App can be downloaded directly from Microsoft Store.
  
 ## Usage
 
 Once configured, the dongle can automatically reconnect to the most recently used device. Please check the support link for more advanced uses. 
  
 ## Platform specific notes/issues
+
+### macOS
+
+Since executables from this repo are signed with Ad-Hoc signature, you have to manually disable quarantine status.
+
+If you try to use application without running command below, system will think this application damaged, and it's totally normal.
+
+```
+# Removing quarantine flag for FlooCast.app
+# Execute Terminal application and run this command
+sudo xattr -rd com.apple.quarantine /Applications/FlooCast.app
+```
+
+### Linux
 
 On Linux, if you run the app as a non-root user, you might get "Permission denied: '/dev/ttyACM0'" error. 
 Please verify the ttyACM0 device is the "dialout" user group and add your $USER to the group.
