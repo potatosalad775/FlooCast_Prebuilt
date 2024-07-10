@@ -15,7 +15,7 @@ executables = [
     Executable(
         "main.py",
         base="gui",
-        icon="FlooCastApp.icns",
+        icon="FlooCastApp",
         target_name="FlooCast",
         shortcut_name="FlooCast",
     )
