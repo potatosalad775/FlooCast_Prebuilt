@@ -44,6 +44,7 @@ if sys.platform == "linux":
     ]
 
 bdist_mac_options = {
+    "bundle_name": "FlooCast",
     "iconfile": "assets/FlooCastApp.icns"
 }
 bdist_dmg_options = {
