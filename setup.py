@@ -19,7 +19,21 @@ build_exe_options = {
 }
 
 if sys.platform == "linux":
-    build_exe_options.includes = ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res"]
+    build_exe_options = {
+        "excludes": [],
+        "includes": ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res"],
+        "packages": [],
+        "include_files": [
+            ("./FlooCastApp.ico", "assets"),
+            ("./FlooCastApp.gif", "assets"),
+            ("./FlooCastApp.png", "assets"),
+            ("./FlooCastApp.icns", "assets"),
+            ("./FlooCastHeader.png", "assets"),
+            ("./offS.png", "assets"),
+            ("./onS.png", "assets"),
+            ("./locales/", "locales"),
+        ]
+    }
 
 bdist_mac_options = {
     "iconfile": "assets/FlooCastApp.icns"
