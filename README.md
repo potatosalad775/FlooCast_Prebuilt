@@ -33,9 +33,9 @@ Since executables from this repo are signed with Ad-Hoc signature, you have to m
 
 If you try to use application without running command below, system will think this application damaged, and it's totally normal.
 
+Open Terminal application and run this command below.
+
 ```
-# Removing quarantine flag for FlooCast.app
-# Execute Terminal application and run this command
 sudo xattr -rd com.apple.quarantine /Applications/FlooCast.app
 ```
 

@@ -33,12 +33,13 @@
 
 아래 명령어를 수행하지 않은 채 프로그램을 실행시키면, 앱이 손상되어 열 수 없다는 안내가 표시될 수 있습니다. 이는 정상적인 상황입니다.
 
+터미널 애플리케이션을 실행한 뒤, 아래 명령어를 수행해주세요.
 
 ```
-# Removing quarantine flag for FlooCast.app
-# Execute Terminal application and run this command
 sudo xattr -rd com.apple.quarantine /Applications/FlooCast.app
 ```
+
+FlooCast.app 프로그램이 '응용 프로그램' 폴더가 아닌 다른 위치에 있다면, 명령어 뒤 경로를 수정해주어야 합니다.
 
 ### Linux
 
