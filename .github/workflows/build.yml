@@ -18,6 +18,8 @@ jobs:
             python-version: 3.9
           - os: macos-latest
             python-version: 3.9
+          - os: macos-12
+            python-version: 3.9
 
     steps:
       - uses: actions/checkout@v4
@@ -48,8 +50,14 @@ jobs:
           # Build App
           python setup_linux.py bdist_appimage
 
-      - name: Build with PyInstaller (macOS)
-        if: runner.os == 'macOS'
+      - name: Build with PyInstaller (macOS ARM)
+        if: runner.os == 'macOS' && matrix.os == 'macos-latest'
+        run: |
+          # Build App
+          python setup.py bdist_dmg
+
+      - name: Build with PyInstaller (macOS x86_64)
+        if: runner.os == 'macOS' && matrix.os == 'macos-12'
         run: |
           # Build App
           python setup.py bdist_dmg
@@ -67,11 +75,18 @@ jobs:
           name: FlooCast-linux
           path: dist/*
 
-      - name: Upload artifact (macOS)
+      - name: Upload artifact (macOS ARM)
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
-          name: FlooCast-macos
+          name: FlooCast-macos-arm
+          path: build/*.dmg
+
+      - name: Upload artifact (macOS x86_64)
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v4
+        with:
+          name: FlooCast-macos-x86_64
           path: build/*.dmg
 
       - name: Upload artifact (Windows)
