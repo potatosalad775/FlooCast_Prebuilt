@@ -7,13 +7,13 @@ build_exe_options = {
     "includes": ["queue"],
     "packages": [],
     "include_files": [
-      ("./FlooCastApp.ico", "assets"),
-      ("./FlooCastApp.gif", "assets"),
-      ("./FlooCastApp.png", "assets"),
-      ("./FlooCastApp.icns", "assets"),
-      ("./FlooCastHeader.png", "assets"),
-      ("./offS.png", "assets"),
-      ("./onS.png", "assets"),
+      ("./FlooCastApp.ico", "FlooCastApp.ico"),
+      ("./FlooCastApp.gif", "FlooCastApp.gif"),
+      ("./FlooCastApp.png", "FlooCastApp.png"),
+      ("./FlooCastApp.icns", "FlooCastApp.icns"),
+      ("./FlooCastHeader.png", "FlooCastHeader.png"),
+      ("./offS.png", "offS.png"),
+      ("./onS.png", "onS.png"),
       ("./locales/", "locales"),
     ]
 }
@@ -34,13 +34,13 @@ if sys.platform == "linux":
         "includes": ["queue", "Xlib.ext.xfixes", "Xlib.ext.xinput", "Xlib.ext.damage", "Xlib.ext.res"],
         "packages": [],
         "include_files": [
-            ("./FlooCastApp.ico", "assets"),
-            ("./FlooCastApp.gif", "assets"),
-            ("./FlooCastApp.png", "assets"),
-            ("./FlooCastApp.icns", "assets"),
-            ("./FlooCastHeader.png", "assets"),
-            ("./offS.png", "assets"),
-            ("./onS.png", "assets"),
+            ("./FlooCastApp.ico", "FlooCastApp.ico"),
+            ("./FlooCastApp.gif", "FlooCastApp.gif"),
+            ("./FlooCastApp.png", "FlooCastApp.png"),
+            ("./FlooCastApp.icns", "FlooCastApp.icns"),
+            ("./FlooCastHeader.png", "FlooCastHeader.png"),
+            ("./offS.png", "offS.png"),
+            ("./onS.png", "onS.png"),
             ("./locales/", "locales"),
         ]
     }
