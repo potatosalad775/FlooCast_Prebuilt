@@ -18,6 +18,16 @@ build_exe_options = {
     ]
 }
 
+executables = [
+    Executable(
+        "main.py",
+        base="gui",
+        icon="FlooCastApp.ico",
+        target_name="FlooCast",
+        shortcut_name="FlooCast",
+    )
+]
+
 if sys.platform == "linux":
     build_exe_options = {
         "excludes": [],
@@ -35,22 +45,22 @@ if sys.platform == "linux":
         ]
     }
 
+    executables = [
+        Executable(
+            "main.py",
+            base="gui",
+            icon="FlooCastApp.png",
+            target_name="FlooCast",
+            shortcut_name="FlooCast",
+        )
+    ]
+
 bdist_mac_options = {
     "iconfile": "FlooCastApp.icns"
 }
 bdist_dmg_options = {
     "applications_shortcut": True,
 }
-
-executables = [
-    Executable(
-        "main.py",
-        base="gui",
-        icon="FlooCastApp.ico",
-        target_name="FlooCast",
-        shortcut_name="FlooCast",
-    )
-]
 
 setup(
     name="FlooCast",
