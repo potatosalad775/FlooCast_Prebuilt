@@ -15,10 +15,20 @@ build_exe_options = {
     ]
 }
 
+executables = [
+    Executable(
+        "main.py",
+        base="gui",
+        icon="FlooCastApp.ico",
+        target_name="FlooCast",
+        shortcut_name="FlooCast",
+    )
+]
+
 setup(
     name="FlooCast",
     version="1.0.9",
     description="FlooGoo FMA120 Configurator",
+    executables=executables,
     options={"build_exe": build_exe_options},
-    executables=[Executable("main.py", base="gui")],
 )
