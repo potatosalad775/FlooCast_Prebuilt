@@ -49,7 +49,13 @@ else:
     lan = userLocale[0].split('_')[0]
 
 # Set the local directory
-app_path = os.path.abspath(os.path.dirname(sys.argv[0]))
+try:
+    # app_path for cx_Freeze executables
+    app_path = os.path.dirname(sys.executable)
+except Exception:
+    app_path = os.path.abspath(os.path.dirname(sys.argv[0]))
+print(app_path)
+# Set the local directory
 localedir = app_path + os.sep + 'locales'
 # Set up your magic function
 translate = gettext.translation("messages", localedir, languages=[lan], fallback=True)
