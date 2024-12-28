@@ -18,7 +18,7 @@ jobs:
             python-version: 3.9
           - os: macos-latest
             python-version: 3.9
-          - os: macos-12
+          - os: macos-13
             python-version: 3.9
 
     steps:
@@ -59,7 +59,7 @@ jobs:
           python setup.py bdist_dmg
 
       - name: Build (macOS x86_64)
-        if: runner.os == 'macOS' && matrix.os == 'macos-12'
+        if: runner.os == 'macOS' && matrix.os == 'macos-13'
         run: |
           # Build App
           python setup.py bdist_dmg
@@ -85,7 +85,7 @@ jobs:
           path: build/*.dmg
 
       - name: Upload artifact (macOS x86_64)
-        if: runner.os == 'macOS' && matrix.os == 'macos-12'
+        if: runner.os == 'macOS' && matrix.os == 'macos-13'
         uses: actions/upload-artifact@v4
         with:
           name: FlooCast-macos-x86_64
