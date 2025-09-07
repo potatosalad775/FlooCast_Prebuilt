@@ -19,10 +19,10 @@ import urllib.request
 import certifi
 import ssl
 
-appIcon = "FlooCastApp.ico"
-appGif = "FlooCastApp.gif"
+appIcon = "assets/FlooCastApp.ico"
+appGif = "assets/FlooCastApp.gif"
 appTitle = "FlooCast"
-appLogoPng = "FlooCastHeader.png"
+appLogoPng = "assets/FlooCastHeader.png"
 
 codecStr = ['None',
             'CVSD',
@@ -51,7 +51,11 @@ else:
     lan = wx.Locale.GetLanguageInfo(userLocale).CanonicalName
 
 # Set the local directory
-app_path = os.path.abspath(os.path.dirname(sys.argv[0]))
+try:
+    # app_path for cx_Freeze executables
+    app_path = os.path.dirname(sys.executable)
+except Exception:
+    app_path = os.path.abspath(os.path.dirname(sys.argv[0]))
 localedir = app_path + os.sep + 'locales'
 # Set up your magic function
 translate = gettext.translation("messages", localedir, languages=[lan], fallback=True)
@@ -98,8 +102,8 @@ def update_status_bar(info: str):
 
 
 # Define On/Off Images
-on = wx.Bitmap(app_path + os.sep + 'onS.png', )
-off = wx.Bitmap(app_path + os.sep + 'offS.png')
+on = wx.Bitmap(app_path + os.sep + 'assets/onS.png', )
+off = wx.Bitmap(app_path + os.sep + 'assets/offS.png')
 
 appPanel = wx.Panel(appFrame)
 appSizer = wx.FlexGridSizer(2, 2, vgap=2, hgap=4)
