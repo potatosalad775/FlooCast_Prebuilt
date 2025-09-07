@@ -13,13 +13,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            python-version: 3.12
+            python-version: 3.13
           - os: windows-latest
-            python-version: 3.12
+            python-version: 3.13
           - os: macos-latest
-            python-version: 3.12
+            python-version: 3.13
           - os: macos-13
-            python-version: 3.12
+            python-version: 3.13
 
     steps:
       - uses: actions/checkout@v4
@@ -45,7 +45,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install cx_Freeze==7.2.10
+          pip install cx_Freeze
           pip install wxpython pystray notify-py pyserial serial-tool certifi pillow numpy sounddevice samplerate
       
       - name: Build (Linux)
