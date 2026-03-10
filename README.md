@@ -2,6 +2,12 @@
 
 [KR / 한국어](./README_KR.md)
 
+> [!IMPORTANT]
+> The pre-built applications in this repository will no longer be updated, as an official build is now provided for MacOS and Linux.
+> Please use the [official build](https://github.com/Flairmesh/FlooCast/tags) instead.
+
+---
+
 A Pre-compiled Python application that allows for the control and configuration of FlooGoo USB Bluetooth dongles.
 
 It configures a FlooGoo FMA120 Bluetooth dongle to pair and connect with a Bluetooth headset/speaker for streaming audio or making VoIP calls. It can also configure the dongle to work as an AuraCast sender.
