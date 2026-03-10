@@ -2,6 +2,12 @@
 
 [EN / English](./README.md)
 
+> [!IMPORTANT]
+> 공식 MacOS / Linux 애플리케이션이 제공되기 시작함에 따라, 본 레포지토리에서 배포되던 애플리케이션은 더 이상 업데이트되지 않을 예정입니다.
+> 대신 [공식 애플리케이션](https://github.com/Flairmesh/FlooCast/tags)을 사용해주세요.
+
+---
+
 본 전용 프로그램은 FlooGoo USB 블루투스 동글을 설정하고 조작하기 위해 미리 컴파일된 Python 애플리케이션입니다.
 
 해당 프로그램은 FlooGoo FMA120 블루투스 동글을 조작하는데 사용됩니다. 오디오 스트리밍 및 VoIP 통화를 위해 블루투스 장치를 연결하거나, 동글이 AuraCast 발신 장치로 동작하도록 할 수도 있습니다.
